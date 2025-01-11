@@ -1,30 +1,36 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../context/AuthContext.jsx";
 import { API_ENDPOINTS } from "../constants";
+import { loginSchem } from "../schemas/loginSchema";
 
 export const useLogin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const loginSchema = loginSchem()(t);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: joiResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (formData) => {
     setError("");
     setIsLoading(true);
 
@@ -52,14 +58,15 @@ export const useLogin = () => {
   };
 
   return {
-    formData,
+    register,
+    handleSubmit,
+    errors,
     error,
     showPassword,
     rememberMe,
     isLoading,
     setShowPassword,
     setRememberMe,
-    handleChange,
-    handleSubmit,
+    onSubmit,
   };
 };

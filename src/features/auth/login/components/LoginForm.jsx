@@ -9,21 +9,23 @@ import { useTranslation } from "react-i18next";
 
 const LoginForm = () => {
   const {
-    formData,
+    register,
+    handleSubmit,
+    errors,
     error,
     showPassword,
     rememberMe,
     isLoading,
     setShowPassword,
     setRememberMe,
-    handleChange,
-    handleSubmit,
+    onSubmit,
   } = useLogin();
 
   const { t, i18n } = useTranslation();
+
   return (
     <FormLayout>
-      <div className="mx-auto  w-full max-w-sm lg:w-96" dir={i18n.dir()}>
+      <div className="mx-auto w-full max-w-sm lg:w-96" dir={i18n.dir()}>
         <div className="text-center">
           <img
             src="/logo.webp"
@@ -33,7 +35,7 @@ const LoginForm = () => {
         </div>
 
         <div className="mt-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -43,21 +45,23 @@ const LoginForm = () => {
               </label>
               <input
                 id="email"
-                name="email"
                 type="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
+                {...register("email")}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
                 placeholder={t("login.email.placeholder")}
               />
+              {errors.email && (
+                <p className="mt-1 text-start text-sm text-red-600">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <PasswordInputField
-              value={formData.password}
-              onChange={handleChange}
+              register={register}
               showPassword={showPassword}
               onTogglePassword={() => setShowPassword(!showPassword)}
+              error={errors.password}
             />
 
             <RememberMeCheckbox
