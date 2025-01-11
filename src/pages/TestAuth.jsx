@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 const TestAuth = () => {
   const { user, logout } = useAuth();
@@ -17,8 +18,9 @@ const TestAuth = () => {
   return (
     <div
       dir={i18n.dir()}
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 flex flex-col items-center py-12 px-6 lg:px-8"
+      className="min-h-screen relative bg-gradient-to-b from-gray-50 to-gray-200 flex flex-col items-center py-12 px-6 lg:px-8"
     >
+      <LanguageSwitcher />
       {/* Outer Wrapper */}
       <div
         className={`max-w-4xl w-full bg-white shadow-lg rounded-lg p-8 transform transition-all duration-700 ease-out ${

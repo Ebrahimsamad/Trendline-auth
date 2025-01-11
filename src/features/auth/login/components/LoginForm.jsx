@@ -23,7 +23,7 @@ const LoginForm = () => {
   const { t, i18n } = useTranslation();
   return (
     <FormLayout>
-      <div className="mx-auto w-full max-w-sm lg:w-96" dir={i18n.dir()}>
+      <div className="mx-auto  w-full max-w-sm lg:w-96" dir={i18n.dir()}>
         <div className="text-center">
           <img
             src="/logo.webp"

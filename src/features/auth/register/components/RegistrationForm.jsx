@@ -5,6 +5,7 @@ import { PasswordInput } from "./PasswordInput";
 import { B2BFields } from "./B2BFields";
 import { useRegistration } from "../hooks/useRegistration";
 import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../../../../components/LanguageSwitcher";
 
 const RegistrationForm = () => {
   const {
@@ -24,7 +25,8 @@ const RegistrationForm = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex" dir={i18n.dir()}>
+    <div className="min-h-screen relative bg-gray-50 flex" dir={i18n.dir()}>
+      <LanguageSwitcher />
       <div className="hidden lg:flex lg:w-1/2 bg-purple-50 items-center justify-center p-12">
         <div className="relative w-full max-w-lg">
           <div className="absolute top-0 -start-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>

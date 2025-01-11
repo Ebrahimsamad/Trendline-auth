@@ -12,7 +12,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className={`absolute top-10 end-10 z-50`}>
+    <div className={`absolute  top-4 end-4 z-50`}>
       <button
         onClick={toggleLanguage}
         className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ease-in-out transform border-2 ${
