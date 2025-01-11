@@ -11,7 +11,7 @@ export const PasswordInput = ({
   <div>
     <label
       htmlFor={id}
-      className="block text-left text-sm font-medium text-gray-700"
+      className="block text-start text-sm font-medium text-gray-700"
     >
       {label}
     </label>
@@ -27,7 +27,7 @@ export const PasswordInput = ({
       />
       <button
         type="button"
-        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+        className="absolute inset-y-0 end-2 ps-3 flex items-center"
         onClick={toggleShow}
       >
         {showPassword ? (
@@ -38,7 +38,7 @@ export const PasswordInput = ({
       </button>
     </div>
     {error && (
-      <p className="mt-2 text-sm text-red-600 text-left">{error.message}</p>
+      <p className="mt-2 text-sm text-red-600 text-start">{error.message}</p>
     )}
   </div>
 );

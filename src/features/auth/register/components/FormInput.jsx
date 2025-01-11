@@ -10,7 +10,7 @@ export const FormInput = ({
   <div>
     <label
       htmlFor={id}
-      className="block text-left text-sm font-medium text-gray-700"
+      className="block text-start text-sm font-medium text-gray-700"
     >
       {label}
     </label>
@@ -24,7 +24,7 @@ export const FormInput = ({
       placeholder={placeholder}
     />
     {error && (
-      <p className="mt-2 text-sm text-red-600 text-left">{error.message}</p>
+      <p className="mt-2 text-sm text-red-600 text-start">{error.message}</p>
     )}
   </div>
 );

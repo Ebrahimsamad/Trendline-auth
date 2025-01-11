@@ -1,0 +1,77 @@
+{
+  "registration": {
+    "title": "Create your account",
+    "issuing_authority": "Issuing Authority",
+    "company_name": "Company Name",
+    "commercial_license_number": "Commercial License Number",
+    "name": {
+      "label": "Name",
+      "placeholder": "Your Full Name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "yourname@example.com"
+    },
+    "password": {
+      "label": "Password",
+      "confirm_label": "Confirm Password"
+    },
+    "phone": {
+      "country_code": {
+        "label": "Country Code",
+        "placeholder": "+20"
+      },
+      "mobile": {
+        "label": "Mobile Number",
+        "placeholder": "1234567890"
+      }
+    },
+    "client_type": {
+      "label": "Client Type"
+    },
+    "button": {
+      "submit": "Register",
+      "submitting": "Registering..."
+    },
+    "login_prompt": "Already have an account?",
+    "login_link": "Sign in here"
+  },
+  "validation": {
+    "name_required": "Name is required",
+    "name_max": "Name must be less than 255 characters",
+    "email_valid": "Valid email is required",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "password_pattern": "Password must contain upper and lower case letters, numbers, and symbols",
+    "passwords_match": "Passwords must match",
+    "password_confirmation_required": "Password confirmation is required",
+    "code_required": "Code is required",
+    "code_format": "Country code must start with '+' or '00' and include only numbers",
+    "mobile_required": "Mobile number is required",
+    "issuing_authority_required": "Issuing authority is required for B2B clients",
+    "company_name_required": "Company name is required for B2B clients",
+    "commercial_license_required": "Commercial license number is required for B2B clients"
+  },
+  "login": {
+    "email": {
+      "label": "Email",
+      "password": "Password",
+      "placeholder": "Enter Your Email",
+      "remember_me": "Remember Me",
+      "forgot_password": "Forgot Password?"
+    },
+    "sign_in": "Sign in",
+    "signing_in": "Signing in...",
+    "register_prompt": "Don't have an account? Register"
+  },
+  "auth": {
+    "welcome": "Welcome, {{name}}!",
+    "role": "Role: {{role}}",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "email_verification": "Email Verification",
+    "verified": "Verified",
+    "not_verified": "Not Verified",
+    "logout": "Logout"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "registration": {
+    "title": "إنشاء حساب",
+    "issuing_authority": "سلطة الإصدار",
+    "company_name": "اسم الشركة",
+    "commercial_license_number": "رقم الرخصة التجارية",
+    "name": {
+      "label": "الاسم",
+      "placeholder": "اسمك الكامل"
+    },
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "your@example.com"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "confirm_label": "تأكيد كلمة المرور"
+    },
+    "phone": {
+      "country_code": {
+        "label": "رمز البلد",
+        "placeholder": "+20"
+      },
+      "mobile": {
+        "label": "رقم الجوال",
+        "placeholder": "1234567890"
+      }
+    },
+    "client_type": {
+      "label": "نوع العميل"
+    },
+    "button": {
+      "submit": "تسجيل",
+      "submitting": "جاري التسجيل..."
+    },
+    "login_prompt": "لديك حساب بالفعل؟",
+    "login_link": "تسجيل الدخول هنا"
+  },
+  "validation": {
+    "name_required": "الاسم مطلوب",
+    "name_max": "يجب أن يكون الاسم أقل من 255 حرفًا",
+    "email_valid": "البريد الإلكتروني صالح مطلوب",
+    "email_required": "البريد الإلكتروني مطلوب",
+    "password_required": "كلمة المرور مطلوبة",
+    "password_pattern": "يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام ورموز",
+    "passwords_match": "يجب أن تتطابق كلمات المرور",
+    "password_confirmation_required": "تأكيد كلمة المرور مطلوب",
+    "code_required": "الرمز مطلوب",
+    "code_format": "يجب أن يبدأ رمز البلد بـ '+' أو '00' ويحتوي على أرقام فقط",
+    "mobile_required": "رقم الهاتف المحمول مطلوب",
+    "issuing_authority_required": "السلطة المصدرة مطلوبة للعملاء B2B",
+    "company_name_required": "اسم الشركة مطلوب للعملاء B2B",
+    "commercial_license_required": "رقم الرخصة التجارية مطلوب للعملاء B2B"
+  },
+  "login": {
+    "email": {
+      "label": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "remember_me": "تذكرني",
+      "forgot_password": "هل نسيت كلمة المرور؟"
+    },
+    "sign_in": "تسجيل الدخول",
+    "signing_in": "جاري تسجيل الدخول...",
+    "register_prompt": "ليس لديك حساب؟ تسجيل"
+  },
+  "auth": {
+    "welcome": "أهلاً، {{name}}!",
+    "role": "الوظيفة: {{role}}",
+    "email": "عنوان البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "email_verification": "تحقق من البريد الإلكتروني",
+    "verified": "تم التحقق",
+    "not_verified": "لم يتم التحقق",
+    "logout": "تسجيل الخروج"
+  }
+}

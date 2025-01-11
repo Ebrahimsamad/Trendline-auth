@@ -4,6 +4,7 @@ import { FormInput } from "./FormInput";
 import { PasswordInput } from "./PasswordInput";
 import { B2BFields } from "./B2BFields";
 import { useRegistration } from "../hooks/useRegistration";
+import { useTranslation } from "react-i18next";
 
 const RegistrationForm = () => {
   const {
@@ -20,13 +21,15 @@ const RegistrationForm = () => {
     onSubmit,
   } = useRegistration();
 
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex" dir={i18n.dir()}>
       <div className="hidden lg:flex lg:w-1/2 bg-purple-50 items-center justify-center p-12">
         <div className="relative w-full max-w-lg">
-          <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 -start-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute top-0 -end-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 start-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
           <img
             src="/login-s.png"
             alt="Login illustration"
@@ -44,7 +47,7 @@ const RegistrationForm = () => {
               className="mx-auto mt-8 h-12 w-auto"
             />
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Create your account
+              {t("registration.title")}
             </h2>
           </div>
 
@@ -58,24 +61,24 @@ const RegistrationForm = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <FormInput
                 id="name"
-                label="Name"
+                label={t("registration.name.label")}
                 register={register}
                 error={errors.name}
-                placeholder="Your Full Name"
+                placeholder={t("registration.name.placeholder")}
               />
 
               <FormInput
                 id="email"
-                label="Email"
+                label={t("registration.email.label")}
                 type="email"
                 register={register}
                 error={errors.email}
-                placeholder="yourname@example.com"
+                placeholder={t("registration.email.placeholder")}
               />
 
               <PasswordInput
                 id="password"
-                label="Password"
+                label={t("registration.password.label")}
                 showPassword={showPassword}
                 toggleShow={() => setShowPassword(!showPassword)}
                 register={register}
@@ -84,19 +87,19 @@ const RegistrationForm = () => {
 
               <PasswordInput
                 id="password_confirmation"
-                label="Confirm Password"
+                label={t("registration.password.confirm_label")}
                 showPassword={showConfirmPassword}
                 toggleShow={() => setShowConfirmPassword(!showConfirmPassword)}
                 register={register}
                 error={errors.password_confirmation}
               />
 
-              <div className="flex space-x-4">
+              <div className="flex items-center  gap-6">
                 {/* Country Code */}
-                <div className="flex-1 max-w-[110px]">
+                <div className=" max-w-[100px]">
                   <FormInput
                     id="mobile_country_code"
-                    label="Country Code"
+                    label={t("registration.phone.country_code.label")}
                     register={register}
                     error={errors.mobile_country_code}
                     placeholder="+20"
@@ -104,10 +107,10 @@ const RegistrationForm = () => {
                 </div>
 
                 {/* Mobile Number */}
-                <div className="flex-1">
+                <div className="flex-grow">
                   <FormInput
                     id="mobile"
-                    label="Mobile Number"
+                    label={t("registration.phone.mobile.label")}
                     register={register}
                     error={errors.mobile}
                     placeholder="1234567890"
@@ -118,16 +121,18 @@ const RegistrationForm = () => {
               <div>
                 <label
                   htmlFor="client_type"
-                  className="block text-left text-sm font-medium text-gray-700"
+                  className="block text-start text-sm font-medium text-gray-700"
                 >
-                  Client Type
+                  {t("registration.client_type.label")}
                 </label>
                 <select
                   id="client_type"
                   {...register("client_type")}
                   className={`mt-1 block w-full px-3 py-2 border ${
                     errors.client_type ? "border-red-500" : "border-gray-300"
-                  } rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500`}
+                  } rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 ${
+                    i18n.language === "ar" ? "text-end" : "text-start"
+                  }`}
                 >
                   {Object.values(CLIENT_TYPES).map((type) => (
                     <option key={type} value={type}>
@@ -155,7 +160,7 @@ const RegistrationForm = () => {
                   {isSubmitting ? "Registering..." : "Register"}
                 </button>
                 {errors.general && (
-                  <p className="mt-2 text-sm text-red-600 text-left">
+                  <p className="mt-2 text-sm text-red-600 text-start">
                     {errors.general.message}
                   </p>
                 )}
@@ -163,12 +168,12 @@ const RegistrationForm = () => {
             </form>
 
             <p className="mt-6 text-center text-sm text-gray-600">
-              Already have an account?{" "}
+              {t("registration.login_prompt")}{" "}
               <Link
                 to="/login"
                 className="font-medium text-purple-600 hover:text-purple-500"
               >
-                Sign in here
+                {t("registration.login_link")}
               </Link>
             </p>
           </div>

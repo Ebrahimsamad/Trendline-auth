@@ -5,6 +5,7 @@ import { RememberMeCheckbox } from "./RememberMeCheckbox";
 import { LoginFooter } from "./LoginFooter";
 import { useLogin } from "../hooks/useLogin";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner";
+import { useTranslation } from "react-i18next";
 
 const LoginForm = () => {
   const {
@@ -19,9 +20,10 @@ const LoginForm = () => {
     handleSubmit,
   } = useLogin();
 
+  const { t, i18n } = useTranslation();
   return (
     <FormLayout>
-      <div className="mx-auto w-full max-w-sm lg:w-96">
+      <div className="mx-auto w-full max-w-sm lg:w-96" dir={i18n.dir()}>
         <div className="text-center">
           <img
             src="/logo.webp"
@@ -35,9 +37,9 @@ const LoginForm = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-left text-sm font-medium text-gray-700"
+                className="block text-start text-sm font-medium text-gray-700"
               >
-                Email
+                {t("login.email.label")}
               </label>
               <input
                 id="email"
@@ -47,7 +49,7 @@ const LoginForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500"
-                placeholder="Enter Your Email"
+                placeholder={t("login.email.placeholder")}
               />
             </div>
 
@@ -71,11 +73,11 @@ const LoginForm = () => {
             >
               {isLoading ? (
                 <div className="flex items-center">
-                  <LoadingSpinner size={4} className="text-white mr-2" />
-                  <span>Signing in...</span>
+                  <LoadingSpinner size={4} className="text-white me-2" />
+                  <span>{t("login.signing_in")}</span>
                 </div>
               ) : (
-                "Sign in"
+                t("login.sign_in")
               )}
             </button>
 
@@ -84,7 +86,7 @@ const LoginForm = () => {
                 to="/register"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
-                Don&apos;t have an account? Register
+                {t("login.register_prompt")}
               </Link>
             </div>
           </form>
