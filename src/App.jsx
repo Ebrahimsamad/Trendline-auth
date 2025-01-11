@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 import RegistrationForm from "./features/auth/register/components/RegistrationForm";
 import LoginForm from "./features/auth/login/components/LoginForm";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
   return (
@@ -12,8 +13,22 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegistrationForm />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginForm />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegistrationForm />
+                </PublicRoute>
+              }
+            />
             <Route
               path="/test-auth"
               element={
